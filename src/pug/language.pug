@@ -1,0 +1,13 @@
+- var blocks = site.blocks 
+
+.title Язык вращений
+.cubes
+  each item in blocks
+    .turns-row 
+      each variant in item.variants
+        .variant
+          .variant-title #{variant.title}
+          .variant-content 
+            include cube
+            .direction 
+              span(class=`mdi ${variant.arrow}`)

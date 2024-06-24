@@ -1,0 +1,15 @@
+
+- var menuItems = site.menuItems
+  .navbar
+    .menu
+      each item in menuItems
+        //- div.menu-item
+        //-   a(href=`${item.link}`)
+        //-     .menu-icon(class=`mdi ${item.icon}`)
+        //-     div(style='text-align: center') #{item.title}
+
+        div.menu-item.tooltippable
+          a(href=`${item.link}`)
+            span.menu-icon.tooltipped(class=`mdi ${item.icon}`)
+    .menu-tooltip &nbsp;
+

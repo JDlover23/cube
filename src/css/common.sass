@@ -1,0 +1,154 @@
+@use "sass:math"
+
+a
+  color: inherit
+  text-decoration: none
+
+.layout
+  display: flex
+  height: fit-content
+  min-height: 100vh
+  align-items: stretch
+  justify-content: center
+.content
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+
+.container
+  display: flex
+  flex-direction: column
+  padding: 0 2rem
+  max-width: 1200px
+  background-repeat: no-repeat
+  background: black
+  color: white
+  width: 68.5%
+
+.header, .footer
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  border-radius: .1rem
+  background-color: #000
+
+.title
+  font-size: 3rem
+.info
+  flex-grow: 1
+.navbar
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  justify-content: center
+  padding: 0 2rem
+  overflow: visible
+  color: white
+.menu
+  display: flex
+  gap: 1rem
+.menu-item
+  cursor: pointer
+  &:hover
+    &:nth-of-type(1)
+      color: blue
+    &:nth-of-type(2)
+      color: red
+    &:nth-of-type(3)
+      color: green
+    &:nth-of-type(4)
+      color: orange
+  .menu-icon
+    font-size: 2rem
+.tooltip
+  position: absolute
+  left: 2rem
+  top: .3rem
+  color: white
+  border-radius: .2rem
+  background-color: #000000bb
+  padding: .1rem .8rem
+  text-wrap: nowrap
+  display: none
+  z-index: 10
+.menu-tooltip
+  text-wrap: nowrap
+  text-align: center
+  color: white
+.tooltippable
+  position: relative
+.cubes
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+
+.turns-row
+  display: flex
+
+$side: 6rem
+$perspective: calc($side * 3)
+
+.variant-title
+  text-align: center
+  margin-top: calc($side / 3)
+  margin-bottom: -(calc($side / 2))
+
+.variant-content
+  display: flex
+  align-items: center
+.direction
+  font-size: 3rem
+// cube
+
+.cube
+  position: relative
+  width: calc($side * 2)
+  height: calc($side * 2)
+  perspective: $perspective
+  perspective-origin: 50% 0%
+
+//sides
+
+%side
+  position: absolute
+  width: $side
+  height: $side
+
+.side-x
+  @extend %side
+  transform-origin: 100% 100%
+  transform: rotateX(90deg) rotateZ(45deg) rotateY(0deg)
+.side-y
+  @extend %side
+  top: $side
+  transform-origin: 100% 50%
+  transform: rotateY(-45deg)
+.side-z
+  @extend %side
+  left: $side
+  top: $side
+  transform-origin: 0% 50%
+  transform: rotateY(45deg)
+
+.cell
+  position: absolute
+  width: calc($side / 3)
+  height: calc($side / 3)
+  border: 1px solid #ccc
+  border-radius: .2rem
+
+$sides: (x, y, z)
+$cols: (__1,__2,__3)
+$rows: (a,b,c)
+@for $i from 1 through length($sides)
+  .#{nth($sides, $i)}
+    position: absolute
+  @for $j from 1 through length($cols)
+    .#{nth($sides, $i)}#{nth($cols, $j)}
+      top: calc(($side / 3) * ($j - 1))
+    @for $k from 1 through length($rows)
+      .#{nth($sides, $i)}__#{nth($rows, $k)}
+        left: calc(($side / 3) * ($k - 1))

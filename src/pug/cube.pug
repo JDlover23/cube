@@ -1,0 +1,9 @@
+- var sides = ['x','y','z']
+- var cols = ['1','2','3']
+- var rows = ['a','b','c']
+.cube
+  each side in sides
+    div(class=`side-${side}`)
+      each row in rows
+        each col in cols
+          div.cell(class=`${side} ${side}__${row} ${side}__${col}`)

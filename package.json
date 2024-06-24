@@ -1,0 +1,49 @@
+{
+  "name": "kita",
+  "version": "1.0.0",
+  "description": "Static site starter kit",
+  "main": "index.js",
+  "repository": {
+    "url": "github.com/corygibbons/kita",
+    "type": "git"
+  },
+  "author": "Cory Gibbons",
+  "license": "MIT",
+  "scripts": {
+    "start": "run-p server watch:*",
+    "server": "browser-sync start --server --port 2000 --files dist/ --ss dist/",
+    "build": "run-p build:*",
+    "build:html": "pug -O src/data/index.js src/pug/*.pug --out dist",
+    "build:css": "sass src/css/index.sass dist/css/style.css",
+    "build:js": "webpack -p",
+    "watch:html": "pug -O src/data/index.js src/pug/*.pug --out dist -w -P",
+    "watch:css": "sass src/css/index.sass dist/css/style.css -w",
+    "watch:data": "onchange 'src/data/**/*.js' -- npm run build:html",
+    "watch:js": "webpack -w"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.17.3",
+    "normalize.css": "^7.0.0",
+    "npm-run-all": "^4.0.2",
+    "onchange": "^3.2.1",
+    "postcss-cli": "^4.1.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-easy-import": "^2.1.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-simple-vars": "^4.1.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "sugarss": "^1.0.0",
+    "webpack": "^3.5.5"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "dependencies": {
+    "sass": "^1.77.5"
+  }
+}
