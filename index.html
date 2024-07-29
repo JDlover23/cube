@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rubic's cube</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="layout">
+      <div class="header">
+        <div class="menu-btn mdi mdi-menu"></div>
+        <div class="navbar">
+          <div class="close-btn mdi mdi-close"></div>
+          <div class="menu">
+            <div class="menu-item tooltippable"><a href="index.html"><span class="menu-icon tooltipped mdi mdi-home"></span><span class="mobile-menu-title">Главная</span></a></div>
+            <div class="menu-item tooltippable"><a href="beginner.html"><span class="menu-icon tooltipped mdi mdi-cube-outline"></span><span class="mobile-menu-title">Простая сборка</span></a></div>
+            <div class="menu-item tooltippable"><a href="friedrich.html"><span class="menu-icon tooltipped mdi mdi-cube-scan"></span><span class="mobile-menu-title">Метод Фридрих</span></a></div>
+            <div class="menu-item tooltippable"><a href="constructor.html"><span class="menu-icon tooltipped mdi mdi-cube-unfolded"></span><span class="mobile-menu-title">Конструктор положений</span></a></div>
+          </div>
+          <div class="menu-tooltip">&nbsp;</div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="title">Про кубик</div>
+        <div class="info">
+          <p>В середине 1970-х Эрнё Рубик работал в отделе Дизайна интерьера в академии </p>Прикладного искусства в Будапеште. Ему никак не удавалось втолковать студентам 
+          математическую теорию групп. Занимаясь группами, Рубик однажды сделал 27 
+          деревянных кубиков, раскрасил каждый в шесть цветов. Неожиданно оказалось 
+          довольно трудно сложить из них один куб, чтобы каждая грань была окрашена в свой цвет. 
+          Сам Рубик бился над задачей целый месяц (хотя сообщается, что первый кубик Рубика 
+          был построен как обучающий инструмент, чтобы помочь его студентам понять 
+          трехмерные объекты, фактически первоначальная цель Рубика заключалась в решении 
+          проблемы структурного перемещения независимых частей). Но самым сложным оказалось 
+          придумать механизм, который состоял из 26 кубиков и структурного крепления.
+          30 января 1975 года Э. Рубик подал заявку и 28 марта 1977 года получил венгерский 
+          патент на своё изобретение, «Магический кубик».
+        </div>
+        <div class="title">Язык вращений</div>
+        <div class="cubes">
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">R</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">R'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">R2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">L</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">L'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">L2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">U</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-left-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">U'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-right-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">U2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-left-thin"> </div>
+                  <div class="mdi mdi-arrow-left-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">D</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-right-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">D'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-left-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">D2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-right-thin"> </div>
+                  <div class="mdi mdi-arrow-right-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">F</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">F'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">F2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="turns-row"> 
+            <div class="variant">
+              <div class="variant-title">B</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">B'</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-down-thin"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="variant">
+              <div class="variant-title">B2</div>
+              <div class="variant-content"> 
+                <div class="cube">
+                  <div class="side-x">
+                    <div class="cell x x__a x__1"></div>
+                    <div class="cell x x__a x__2"></div>
+                    <div class="cell x x__a x__3"></div>
+                    <div class="cell x x__b x__1"></div>
+                    <div class="cell x x__b x__2"></div>
+                    <div class="cell x x__b x__3"></div>
+                    <div class="cell x x__c x__1"></div>
+                    <div class="cell x x__c x__2"></div>
+                    <div class="cell x x__c x__3"></div>
+                  </div>
+                  <div class="side-y">
+                    <div class="cell y y__a y__1"></div>
+                    <div class="cell y y__a y__2"></div>
+                    <div class="cell y y__a y__3"></div>
+                    <div class="cell y y__b y__1"></div>
+                    <div class="cell y y__b y__2"></div>
+                    <div class="cell y y__b y__3"></div>
+                    <div class="cell y y__c y__1"></div>
+                    <div class="cell y y__c y__2"></div>
+                    <div class="cell y y__c y__3"></div>
+                  </div>
+                  <div class="side-z">
+                    <div class="cell z z__a z__1"></div>
+                    <div class="cell z z__a z__2"></div>
+                    <div class="cell z z__a z__3"></div>
+                    <div class="cell z z__b z__1"></div>
+                    <div class="cell z z__b z__2"></div>
+                    <div class="cell z z__b z__3"></div>
+                    <div class="cell z z__c z__1"></div>
+                    <div class="cell z z__c z__2"></div>
+                    <div class="cell z z__c z__3"></div>
+                  </div>
+                </div>
+                <div class="direction"> 
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                  <div class="mdi mdi-arrow-up-thin"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+  <script src="js/bundle.js"></script>
+</html>
