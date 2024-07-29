@@ -1,15 +1,12 @@
 
 - var menuItems = site.menuItems
   .navbar
+    .close-btn(class="mdi mdi-close")
     .menu
       each item in menuItems
-        //- div.menu-item
-        //-   a(href=`${item.link}`)
-        //-     .menu-icon(class=`mdi ${item.icon}`)
-        //-     div(style='text-align: center') #{item.title}
-
         div.menu-item.tooltippable
           a(href=`${item.link}`)
             span.menu-icon.tooltipped(class=`mdi ${item.icon}`)
+            span.mobile-menu-title #{item.title}
     .menu-tooltip &nbsp;
 

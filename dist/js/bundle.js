@@ -79,6 +79,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 console.log("" + _data2.default.site.blocks[0].code);
 var blocks = _data2.default.site.blocks;
 var menu = _data2.default.site.menuItems;
+var isMobile = window.innerWidth < 600;
 //debounce
 function debounce(callback, delay) {
   var timer = void 0;
@@ -116,7 +117,7 @@ function calcBackground() {
         // while (colorItem == prevColorItem) {
         //   colorItem = Math.floor(Math.random() * 6);
         // }
-        var rect = "<rect x='" + col * (width + gap) + "' y='" + row * (width + gap) + "' width='" + width + "' height='" + width + "' rx='10' style='fill: " + colors[colorItem] + "; stroke: black' opacity='0.3' />";
+        var rect = "<rect x='" + col * (width + gap) + "' y='" + row * (width + gap) + "' width='" + width + "' height='" + width + "' rx='10' style='fill: " + colors[colorItem] + "; stroke: black' opacity='0.2' />";
         rects = rects + rect;
         // prevColorItem = colorItem;
       }
@@ -127,43 +128,37 @@ function calcBackground() {
 function setBackground() {
   var viewBox = "0 0 " + (width + gap) * totalCols + " " + (width + gap) * totalRows;
   var rects = calcBackground();
-  var mySVG = "<svg viewBox='" + viewBox + "' xmlns='http://www.w3.org/2000/svg' style='background-color: #222222;'>" + rects + "</svg>";
+  var mySVG = "<svg viewBox='" + viewBox + "' xmlns='http://www.w3.org/2000/svg'>" + rects + "</svg>";
   var mySVG64 = window.btoa(mySVG);
   var background = "url('data:image/svg+xml;base64," + mySVG64 + "')";
   layout.style.backgroundImage = background;
   layout.style.backgroundSize = "cover";
 }
 
-function calcHeight(width) {
+function calcHeight() {
   var header = document.querySelector(".header");
   var footer = document.querySelector(".footer");
   var height = squareWidth - 1 + "px";
-  var xsHeight = (squareWidth - 1) * 2 + "px";
-  if (width > 1200) {
-    header.style.height = footer.style.height = height;
-  } else {
-    header.style.height = xsHeight;
-    footer.style.height = height;
-  }
+  header.style.height = footer.style.height = height;
 }
 setInterval(function () {
   setBackground();
 }, 2000);
 
 window.addEventListener("load", function () {
-  calcHeight(layout.offsetWidth);
+  calcHeight();
   setBackground();
 }, false);
 
 window.addEventListener("resize", function () {
-  calcHeight(layout.offsetWidth);
+  calcHeight();
   debounce(setBackground(), 5000);
 }, false);
 
 //tooltip
 var tooltippable = document.querySelectorAll(".tooltippable");
 tooltippable.forEach(function (item, index) {
-  var tooltip = '';
+  var tooltip = "";
   if (item.querySelector(".tooltip")) {
     tooltip = item.querySelector(".tooltip");
     console.log(tooltip);
@@ -173,15 +168,34 @@ tooltippable.forEach(function (item, index) {
   var tooltipped = item.querySelector(".tooltipped");
   tooltipped.onmouseover = function () {
     tooltip.textContent = menu[index].title;
-    tooltip.style.display = "block";
+    tooltip.classList.add("hovered");
   };
   tooltipped.onmouseout = function () {
-    tooltip.textContent = '\xa0';
+    tooltip.classList.remove("hovered");
   };
 });
+//menu
+if (isMobile) {
+  var _menu = document.querySelector(".menu-btn");
+  var navbar = document.querySelector(".navbar");
+  var close = document.querySelector(".close-btn");
+  _menu.onclick = function () {
+    _menu.style.display = "none";
+    navbar.style.display = "block";
+  };
+  close.onclick = function () {
+    _menu.style.display = "block";
+    navbar.style.display = "none";
+  };
+}
 
 //fill the necessary cells
-var turns_rows = document.querySelectorAll(".turns-row");
+var turns_rows = "";
+// if (isMobile) {
+//   turns_rows = document.querySelectorAll(".turns-row_mobile");
+// } else {
+turns_rows = document.querySelectorAll(".turns-row");
+// }
 for (var i = 0; i < blocks.length; i++) {
   var variants = turns_rows[i].querySelectorAll(".variant");
   var codeParts = blocks[i].code;
@@ -221,95 +235,91 @@ module.exports = {
   menuItems: [{
     title: "Главная",
     icon: "mdi-home",
-    link: "index.html",
-    hovered: false
+    link: "index.html"
   }, {
     title: "Простая сборка",
     icon: "mdi-cube-outline",
-    link: "beginner.html",
-    hovered: false
+    link: "beginner.html"
   }, {
     title: "Метод Фридрих",
     icon: "mdi-cube-scan",
-    link: "friedrich.html",
-    hovered: false
+    link: "friedrich.html"
   }, {
     title: "Конструктор положений",
     icon: "mdi-cube-unfolded",
-    link: "constructor.html",
-    hovered: false
+    link: "constructor.html"
   }],
   blocks: [{
     code: ["x__c", "y__c", "z"],
     variants: [{
       title: "R",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }, {
       title: "R'",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }, {
       title: "R2",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }]
   }, {
     code: ["x__a", "y__a"],
     variants: [{
       title: "L",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }, {
       title: "L'",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }, {
       title: "L2",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }]
   }, {
     code: ["x", "y__1", "z__1"],
     variants: [{
       title: "U",
-      arrow: "mdi-arrow-left"
+      arrow: "mdi-arrow-left-thin"
     }, {
       title: "U'",
-      arrow: "mdi-arrow-right"
+      arrow: "mdi-arrow-right-thin"
     }, {
       title: "U2",
-      arrow: "mdi-arrow-left"
+      arrow: "mdi-arrow-left-thin"
     }]
   }, {
     code: ["y__3", "z__3"],
     variants: [{
       title: "D",
-      arrow: "mdi-arrow-right"
+      arrow: "mdi-arrow-right-thin"
     }, {
       title: "D'",
-      arrow: "mdi-arrow-left"
+      arrow: "mdi-arrow-left-thin"
     }, {
       title: "D2",
-      arrow: "mdi-arrow-right"
+      arrow: "mdi-arrow-right-thin"
     }]
   }, {
     code: ["x__3", "y", "z__a"],
     variants: [{
       title: "F",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }, {
       title: "F'",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }, {
       title: "F2",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }]
   }, {
     code: ["x__1", "z__c"],
     variants: [{
       title: "B",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }, {
       title: "B'",
-      arrow: "mdi-arrow-down"
+      arrow: "mdi-arrow-down-thin"
     }, {
       title: "B2",
-      arrow: "mdi-arrow-up"
+      arrow: "mdi-arrow-up-thin"
     }]
   }]
 };

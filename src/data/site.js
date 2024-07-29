@@ -5,25 +5,21 @@ module.exports = {
       title: "Главная",
       icon: "mdi-home",
       link: "index.html",
-      hovered: false,
     },
     {
       title: "Простая сборка",
       icon: "mdi-cube-outline",
       link: "beginner.html",
-      hovered: false,
     },
     {
       title: "Метод Фридрих",
       icon: "mdi-cube-scan",
       link: "friedrich.html",
-      hovered: false,
     },
     {
       title: "Конструктор положений",
       icon: "mdi-cube-unfolded",
       link: "constructor.html",
-      hovered: false,
     },
   ],
   blocks: [
@@ -32,15 +28,15 @@ module.exports = {
       variants: [
         {
           title: "R",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
         {
           title: "R'",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
         {
           title: "R2",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
       ],
     },
@@ -49,15 +45,15 @@ module.exports = {
       variants: [
         {
           title: "L",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
         {
           title: "L'",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
         {
           title: "L2",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
       ],
     },
@@ -66,15 +62,15 @@ module.exports = {
       variants: [
         {
           title: "U",
-          arrow: "mdi-arrow-left",
+          arrow: "mdi-arrow-left-thin",
         },
         {
           title: "U'",
-          arrow: "mdi-arrow-right",
+          arrow: "mdi-arrow-right-thin",
         },
         {
           title: "U2",
-          arrow: "mdi-arrow-left",
+          arrow: "mdi-arrow-left-thin",
         },
       ],
     },
@@ -83,15 +79,15 @@ module.exports = {
       variants: [
         {
           title: "D",
-          arrow: "mdi-arrow-right",
+          arrow: "mdi-arrow-right-thin",
         },
         {
           title: "D'",
-          arrow: "mdi-arrow-left",
+          arrow: "mdi-arrow-left-thin",
         },
         {
           title: "D2",
-          arrow: "mdi-arrow-right",
+          arrow: "mdi-arrow-right-thin",
         },
       ],
     },
@@ -100,15 +96,15 @@ module.exports = {
       variants: [
         {
           title: "F",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
         {
           title: "F'",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
         {
           title: "F2",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
       ],
     },
@@ -117,15 +113,15 @@ module.exports = {
       variants: [
         {
           title: "B",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
         {
           title: "B'",
-          arrow: "mdi-arrow-down",
+          arrow: "mdi-arrow-down-thin",
         },
         {
           title: "B2",
-          arrow: "mdi-arrow-up",
+          arrow: "mdi-arrow-up-thin",
         },
       ],
     },

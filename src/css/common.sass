@@ -1,56 +1,76 @@
-@use "sass:math"
+:root
+  --bg-color: white
+  --color: #111111
+  --bg-color-header: #ffffffdd
+
+  --side: 6rem
+  --perspective: calc(var(--side) * 3)
 
 a
   color: inherit
   text-decoration: none
-
+html
+  background: var(--bg-color)
 .layout
   display: flex
+  flex-direction: column
   height: fit-content
   min-height: 100vh
-  align-items: stretch
-  justify-content: center
-.content
-  display: flex
-  flex-direction: column
+  justify-content: stretch
   align-items: center
-  width: 100%
 
-.container
+// .content
+//   display: flex
+//   flex-direction: column
+//   align-items: center
+//   width: 100%
+
+.main
+  position: relative
   display: flex
   flex-direction: column
   padding: 0 2rem
   max-width: 1200px
   background-repeat: no-repeat
-  background: black
-  color: white
+  background: var(--bg-color)
+  color: var(--color)
   width: 68.5%
 
 .header, .footer
   display: flex
-  align-items: center
   justify-content: center
+  align-items: stretch
   width: 100%
   border-radius: .1rem
-  background-color: #000
-
+  backdrop-filter: blur(10px)
+.footer
+  background-color: var(--bg-color)
+.header
+  position: sticky
+  top: 0
+  background-color: var(--bg-color-header)
+  z-index: 2
+.menu-btn, .close-btn
+  display: none
 .title
   font-size: 3rem
+.mobile-menu-title
+  display: none
 .info
   flex-grow: 1
 .navbar
-  display: flex
-  flex-direction: column
-  align-items: stretch
+  display: grid
+  grid-template-rows: 100% 20%
   justify-content: center
   padding: 0 2rem
   overflow: visible
-  color: white
+  color: var(--color)
 .menu
   display: flex
   gap: 1rem
+  align-self: center
+  justify-self: center
 .menu-item
-  cursor: pointer
   &:hover
     &:nth-of-type(1)
       color: blue
@@ -62,11 +82,12 @@ a
       color: orange
   .menu-icon
     font-size: 2rem
+    cursor: pointer
 .tooltip
   position: absolute
   left: 2rem
   top: .3rem
-  color: white
+  color: var(--color)
   border-radius: .2rem
   background-color: #000000bb
   padding: .1rem .8rem
@@ -76,7 +97,13 @@ a
 .menu-tooltip
   text-wrap: nowrap
   text-align: center
-  color: white
+  color: var(--color)
+  height: fit-content
+  width: 100%
+  display: none
+  &.hovered
+    background-color: var(--bg-color-header)
+    display: block
 .tooltippable
   position: relative
 .cubes
@@ -88,34 +115,33 @@ a
 .turns-row
   display: flex
 
-$side: 6rem
-$perspective: calc($side * 3)
-
 .variant-title
   text-align: center
-  margin-top: calc($side / 3)
-  margin-bottom: -(calc($side / 2))
+  margin-top: calc(var(--side) / 3)
+  margin-bottom: (calc((var(--side)) / -2))
 
 .variant-content
   display: flex
   align-items: center
 .direction
   font-size: 3rem
+  margin-left: calc(var(--side) / -2.5)
+  margin-top: calc(var(--side) / 1.5)
 // cube
 
 .cube
   position: relative
-  width: calc($side * 2)
-  height: calc($side * 2)
-  perspective: $perspective
+  width: calc(var(--side) * 2)
+  height: calc(var(--side) * 2)
+  perspective: var(--perspective)
   perspective-origin: 50% 0%
 
 //sides
 
 %side
   position: absolute
-  width: $side
-  height: $side
+  width: var(--side)
+  height: var(--side)
 
 .side-x
   @extend %side
@@ -123,20 +149,20 @@ $perspective: calc($side * 3)
   transform: rotateX(90deg) rotateZ(45deg) rotateY(0deg)
 .side-y
   @extend %side
-  top: $side
+  top: var(--side)
   transform-origin: 100% 50%
   transform: rotateY(-45deg)
 .side-z
   @extend %side
-  left: $side
-  top: $side
+  left: var(--side)
+  top: var(--side)
   transform-origin: 0% 50%
   transform: rotateY(45deg)
 
 .cell
   position: absolute
-  width: calc($side / 3)
-  height: calc($side / 3)
+  width: calc(var(--side) / 3)
+  height: calc(var(--side) / 3)
   border: 1px solid #ccc
   border-radius: .2rem
 
@@ -148,7 +174,9 @@ $rows: (a,b,c)
     position: absolute
   @for $j from 1 through length($cols)
     .#{nth($sides, $i)}#{nth($cols, $j)}
-      top: calc(($side / 3) * ($j - 1))
+      top: calc((var(--side) / 3) * ($j - 1))
     @for $k from 1 through length($rows)
       .#{nth($sides, $i)}__#{nth($rows, $k)}
-        left: calc(($side / 3) * ($k - 1))
+        left: calc((var(--side) / 3) * ($k - 1))
+.turns-row_mobile
+  display: none

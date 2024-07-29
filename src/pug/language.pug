@@ -1,5 +1,5 @@
+- var double = function(x){ return x.endsWith('2', 2); }
 - var blocks = site.blocks 
-
 .title Язык вращений
 .cubes
   each item in blocks
@@ -10,4 +10,18 @@
           .variant-content 
             include cube
             .direction 
-              span(class=`mdi ${variant.arrow}`)
+              div(class=`mdi ${variant.arrow}`) 
+              if double(`${variant.title}`)
+                div(class=`mdi ${variant.arrow}`) 
+    //- .turns-row_mobile 
+    //-   .variants
+    //-     each variant in item.variants
+    //-       .variant-info
+    //-         .variant-title #{variant.title}
+    //-         .direction 
+    //-           div(class=`mdi ${variant.arrow}`) 
+    //-           if double(`${variant.title}`)
+    //-             div(class=`mdi ${variant.arrow}`) 
+    //-   .variant
+    //-     .variant-content
+    //-       include cube

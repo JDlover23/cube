@@ -1,3 +1,55 @@
 @media screen and (max-width: 600px)
-    .container
-        width: 100%
+  .header
+    height: 3rem !important
+  .main
+    width: 100%
+  .info, .title, .menu-btn, .close-btn, .menu
+    padding: 0 2rem
+  .container
+    width: 100%
+  .header
+    justify-content: start
+  .navbar
+    display: none
+    position: absolute
+    background: var(--bg-color)
+    height: 100vh
+    width: 100vw
+    padding: 0
+  .menu-btn, .close-btn
+    display: block
+    font-size: 2.5rem
+    color: var(--color)
+  .menu
+    flex-direction: column
+    align-self: start
+  .mobile-menu-title
+    display: inline
+  .turns-row
+    margin-top: 2rem
+    padding-bottom: 2rem
+    flex-direction: column
+    width: 100%
+    align-items: center
+    &:nth-child(2n)
+      background-color: #55555511
+      
+  // .turns-row_mobile
+  //   display: block
+  // .variants
+  //   display: flex
+  //   margin-bottom: (calc((var(--side)) / -2))
+  //   margin-top: 3rem
+  // .variant-info
+  //   display: flex
+  //   padding-right: 1rem
+  // .variant-title
+  //   font-size: 1.5rem
+  //   margin-left: 0
+  //   margin-top: 0
+  // .direction
+  //   color: red
+  //   display: flex
+  //   margin-left: 0
+  //   margin-top: 0
+  //   font-size: 1.5rem

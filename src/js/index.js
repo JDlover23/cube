@@ -3,6 +3,7 @@ import data from "../data";
 console.log(`${data.site.blocks[0].code}`);
 const blocks = data.site.blocks;
 const menu = data.site.menuItems;
+const isMobile = window.innerWidth < 600;
 //debounce
 function debounce(callback, delay) {
   let timer;
@@ -21,7 +22,7 @@ const gap = 5;
 const colors = ["white", "yellow", "red", "green", "blue", "orange"];
 const width = 100;
 
-let totalWidth = layout.offsetWidth
+let totalWidth = layout.offsetWidth;
 let squareWidth = Math.ceil(layout.offsetWidth / totalCols);
 let totalRows = Math.ceil(layout.offsetHeight / squareWidth);
 
@@ -44,7 +45,7 @@ function calcBackground() {
           row * (width + gap)
         }' width='${width}' height='${width}' rx='10' style='fill: ${
           colors[colorItem]
-        }; stroke: black' opacity='0.3' />`;
+        }; stroke: black' opacity='0.2' />`;
         rects = rects + rect;
         // prevColorItem = colorItem;
       }
@@ -55,26 +56,18 @@ function calcBackground() {
 function setBackground() {
   let viewBox = `0 0 ${(width + gap) * totalCols} ${(width + gap) * totalRows}`;
   const rects = calcBackground();
-  const mySVG = `<svg viewBox='${viewBox}' xmlns='http://www.w3.org/2000/svg' style='background-color: #222222;'>${rects}</svg>`;
+  const mySVG = `<svg viewBox='${viewBox}' xmlns='http://www.w3.org/2000/svg'>${rects}</svg>`;
   const mySVG64 = window.btoa(mySVG);
   const background = "url('data:image/svg+xml;base64," + mySVG64 + "')";
   layout.style.backgroundImage = background;
   layout.style.backgroundSize = "cover";
 }
 
-
-function calcHeight(width) {
+function calcHeight() {
   const header = document.querySelector(".header");
   const footer = document.querySelector(".footer");
   let height = `${squareWidth - 1}px`;
-  let xsHeight = `${(squareWidth - 1)*2}px`;
-  if(width > 1200) {
-    header.style.height = footer.style.height = height;
-  }
-  else {
-    header.style.height = xsHeight
-    footer.style.height = height;
-  }
+  header.style.height = footer.style.height = height;
 }
 setInterval(function () {
   setBackground();
@@ -83,7 +76,7 @@ setInterval(function () {
 window.addEventListener(
   "load",
   function () {
-    calcHeight(layout.offsetWidth)
+    calcHeight();
     setBackground();
   },
   false
@@ -92,7 +85,7 @@ window.addEventListener(
 window.addEventListener(
   "resize",
   function () {
-    calcHeight(layout.offsetWidth)
+    calcHeight();
     debounce(setBackground(), 5000);
   },
   false
@@ -101,25 +94,44 @@ window.addEventListener(
 //tooltip
 const tooltippable = document.querySelectorAll(".tooltippable");
 tooltippable.forEach((item, index) => {
-  let tooltip = ''
+  let tooltip = "";
   if (item.querySelector(".tooltip")) {
     tooltip = item.querySelector(".tooltip");
-    console.log(tooltip)
+    console.log(tooltip);
   } else {
     tooltip = document.querySelector(".menu-tooltip");
   }
   const tooltipped = item.querySelector(".tooltipped");
   tooltipped.onmouseover = () => {
-    tooltip.textContent = menu[index].title
-    tooltip.style.display = "block";
+    tooltip.textContent = menu[index].title;
+    tooltip.classList.add("hovered");
   };
   tooltipped.onmouseout = () => {
-    tooltip.textContent = '\xa0'
+    tooltip.classList.remove("hovered");
   };
 });
+//menu
+if(isMobile) {
+  const menu = document.querySelector(".menu-btn")
+  const navbar = document.querySelector(".navbar")
+  const close = document.querySelector(".close-btn")
+  menu.onclick = () => {
+    menu.style.display = "none"
+    navbar.style.display = "block"
+  }
+  close.onclick = () => {
+    menu.style.display = "block"
+    navbar.style.display = "none"
+  }
+}
 
 //fill the necessary cells
-let turns_rows = document.querySelectorAll(".turns-row");
+let turns_rows = "";
+// if (isMobile) {
+//   turns_rows = document.querySelectorAll(".turns-row_mobile");
+// } else {
+  turns_rows = document.querySelectorAll(".turns-row");
+// }
 for (let i = 0; i < blocks.length; i++) {
   let variants = turns_rows[i].querySelectorAll(".variant");
   let codeParts = blocks[i].code;
