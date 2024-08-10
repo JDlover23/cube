@@ -111,18 +111,23 @@ tooltippable.forEach((item, index) => {
   };
 });
 //menu
-if(isMobile) {
-  const menu = document.querySelector(".menu-btn")
-  const navbar = document.querySelector(".navbar")
-  const close = document.querySelector(".close-btn")
+if (isMobile) {
+  const menu = document.querySelector(".menu-btn");
+  const navbar = document.querySelector(".navbar");
+  const close = document.querySelector(".close-btn");
+  const main = document.querySelector(".main");
   menu.onclick = () => {
-    menu.style.display = "none"
-    navbar.style.display = "block"
-  }
+    navbar.style.transform = "translateX(0)";
+    main.style.position = "fixed";
+    menu.style.display = "none";
+  };
   close.onclick = () => {
-    menu.style.display = "block"
-    navbar.style.display = "none"
-  }
+      menu.style.display = "block";
+      main.style.position = "relative";
+      console.log("works")
+    navbar.style.transform = "translateX(-100vw)";
+    
+  };
 }
 
 //fill the necessary cells
@@ -130,7 +135,7 @@ let turns_rows = "";
 // if (isMobile) {
 //   turns_rows = document.querySelectorAll(".turns-row_mobile");
 // } else {
-  turns_rows = document.querySelectorAll(".turns-row");
+turns_rows = document.querySelectorAll(".turns-row");
 // }
 for (let i = 0; i < blocks.length; i++) {
   let variants = turns_rows[i].querySelectorAll(".variant");

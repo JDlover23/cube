@@ -179,13 +179,17 @@ if (isMobile) {
   var _menu = document.querySelector(".menu-btn");
   var navbar = document.querySelector(".navbar");
   var close = document.querySelector(".close-btn");
+  var main = document.querySelector(".main");
   _menu.onclick = function () {
+    navbar.style.transform = "translateX(0)";
+    main.style.position = "fixed";
     _menu.style.display = "none";
-    navbar.style.display = "block";
   };
   close.onclick = function () {
     _menu.style.display = "block";
-    navbar.style.display = "none";
+    main.style.position = "relative";
+    console.log("works");
+    navbar.style.transform = "translateX(-100vw)";
   };
 }
 
